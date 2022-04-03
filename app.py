@@ -45,7 +45,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
     
 #lottie_coding = load_lottiefile("images/home_ani.json")
-lottie_coding = load_lottiefile("images/home_ani.json")
+lottie_coding = load_lottiefile("images/lf30_editor_gwgwzk2g.json")
 def types(df):
     return pd.DataFrame(df.dtypes, columns=['Type'])
 
