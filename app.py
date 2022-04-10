@@ -61,7 +61,17 @@ def main():
     st.sidebar.title("Please upload Your CSV File: ")
     uploaded_file = st.sidebar.file_uploader("Choose a CSV file", type={"csv"})   
     #uploaded_file = st.file_uploader("Choose a CSV file")
-   
+    
+    if uploaded_file is not None != "diamonds.csv":
+        pass;
+    else:
+        use_example_file = st.sidebar.checkbox("👆 Default diamonds.csv file", False, help="Use in-built example file to demo the app")
+        ab_default = None
+        result_default = None
+        uploaded_file = "diamonds.csv"
+        ab_default = ["variant"]
+        result_default = ["converted"] 
+
     #if uploaded_file is not None and choice == "Home":
     if choice == "Home":
         # My title of my project
@@ -285,30 +295,7 @@ def main():
                 
                 
 
-    elif uploaded_file is not None and choice == " Plotting and visualization":
-        st.subheader(choice)
-        data = pd.read_csv(uploaded_file)
-        df = data.copy()
-        all_columns = df.columns.tolist()
-        type_of_plot = st.selectbox("Select Type of Plot", ["bar", "pie", "scatter"]) 
 
-        if type_of_plot=="bar":
-            select_columns_to_plot = st.multiselect("Select columns to plot", all_columns)
-            cust_data = df[select_columns_to_plot]
-            #st.bar_chart(cust_data)
-            st.write(sns.catplot(x=all_columns,data=df,kind="count", aspect=1.5))
-
-        elif type_of_plot=="pie":
-            select_columns_to_plot = st.selectbox("Select a column", all_columns)
-            st.write(df[select_columns_to_plot].value_counts().plot.pie())
-            st.pyplot()
-
-        elif type_of_plot=="scatter":
-            st.write("Scatter Plot")
-            scatter_x = st.selectbox("Select a column for X Axis", all_columns)
-            scatter_y = st.selectbox("Select a column for Y Axis", all_columns)
-            st.write(sns.scatterplot(x=scatter_x, y=scatter_y, data = df))
-            st.pyplot()
              
     #elif uploaded_file is not None and choice == "Our Team": 
     elif choice == "Our Team": 
@@ -366,7 +353,7 @@ def main():
         unsafe_allow_html=True,
         )
 
-    if choice == "Download":
+    elif choice == "Download":
         with open ("streamlit_app.zip", "rb") as fp:
             btn = st.download_button(
                 label="Download our App!! (Windows)",
