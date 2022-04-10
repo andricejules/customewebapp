@@ -45,13 +45,16 @@ def load_lottiefile(filepath: str):
         return json.load(f)
     
 #lottie_coding = load_lottiefile("images/home_ani.json")
-lottie_coding = load_lottiefile("images/lf30_editor_gwgwzk2g.json")
+lottie_coding = load_lottiefile("images/home_ani.json")
+
 def types(df):
     return pd.DataFrame(df.dtypes, columns=['Type'])
 
+st.info(f"""👆 Upload a .csv file first. Sample to try: [biostats.csv](https://people.sc.fsu.edu/~jburkardt/data/csv/biostats.csv) """)
+
 def main():
     st.sidebar.title("What would you like to do?")
-    activities = ["Home","Exploring the data and Plotting",  "Our Team"]
+    activities = ["Home","Exploring the data and Plotting",  "Our Team","Download"]
     choice = st.sidebar.selectbox("Select Activity", activities)
     
     # USING THE SIDE BAR
@@ -362,6 +365,15 @@ def main():
         """,
         unsafe_allow_html=True,
         )
+
+    if choice == "Download":
+        with open ("streamlit_app.zip", "rb") as fp:
+            btn = st.download_button(
+                label="Download our App!! (Windows)",
+                data=fp,
+                file_name="streamlit_app.zip",
+                mime="application/zip"
+            )
        
 
 # The Python is executed directly by the python interpreter            
