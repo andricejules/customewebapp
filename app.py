@@ -50,7 +50,6 @@ lottie_coding = load_lottiefile("images/home_ani.json")
 def types(df):
     return pd.DataFrame(df.dtypes, columns=['Type'])
 
-st.info(f"""👆 Upload a .csv file first. Sample to try: [biostats.csv](https://people.sc.fsu.edu/~jburkardt/data/csv/biostats.csv) """)
 
 def main():
     st.sidebar.title("What would you like to do?")
@@ -74,6 +73,7 @@ def main():
 
     #if uploaded_file is not None and choice == "Home":
     if choice == "Home":
+        st.info(f"""👆 Upload a .csv file first. Sample to try: [biostats.csv](https://people.sc.fsu.edu/~jburkardt/data/csv/biostats.csv) """)
         # My title of my project
         #st.title("Welcome To Our Web Application.")
         
