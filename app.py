@@ -181,11 +181,22 @@ def main():
             st.text("Datatypes Summary")
             st.write(data.isnull().sum())
             
-        # Show Data summary
-        if st.checkbox("Getting descriptive statistics of the data"):
-            st.text("Datatypes Summary")
-            st.write(data.describe())
-                     
+        if st.checkbox("Generating Pairs Plots"):
+            #st.write(sns.scatterplot(x=scatter_x, y=scatter_y, data = df))
+            # Create a list of columns objects
+                list_of_object_columns=[]
+                list_of_numerical_values_columns=[] # int and float
+
+                for column_name,coltype in data.dtypes.iteritems():
+                    if coltype=='object':
+                        list_of_object_columns.append(column_name)
+                        categorical_data=list_of_object_columns
+                    elif coltype=='float64' or coltype=='int64':
+                        list_of_numerical_values_columns.append(column_name)
+                        numerical_data=list_of_numerical_values_columns
+
+                fig = sns.pairplot(data)
+                st.pyplot(fig)             
             
         if st.checkbox("Viewing the counts of categorical data and the relationship between continuous variables"):
             #type_of_plot = st.selectbox("Select Type of Plot", ["categorical data(Bar chart)","continuous data(Scatter)"])
