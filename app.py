@@ -180,6 +180,11 @@ def main():
         if st.checkbox("Show empty cells"):
             st.text("Datatypes Summary")
             st.write(data.isnull().sum())
+        
+        # Show Data summary
+        if st.checkbox("Getting descriptive statistics of the data"):
+            st.text("Datatypes Summary")
+            st.write(data.describe())
             
         if st.checkbox("Generating Pairs Plots"):
             #st.write(sns.scatterplot(x=scatter_x, y=scatter_y, data = df))
