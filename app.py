@@ -53,7 +53,7 @@ def types(df):
 
 def main():
     st.sidebar.title("What would you like to do?")
-    activities = ["Home","Exploring the data and Plotting",  "Our Team"]
+    activities = ["Home","Exploring the data and Plotting",  "Our Team","Download"]
     choice = st.sidebar.selectbox("Select Activity", activities)
     
     # USING THE SIDE BAR
